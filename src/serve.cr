@@ -23,7 +23,8 @@ module Serve
     handler = Serve::StaticFileHandler.new(public_dir)
     logger = Serve::LogPrettyHandler.new(STDOUT, colors: colors)
 
-    server = HTTP::Server.new(host, port, [logger, handler])
+    server = HTTP::Server.new([logger, handler])
+    server.bind_tcp host: host, port: port
     public_dir = File.expand_path(public_dir)
 
     if colors

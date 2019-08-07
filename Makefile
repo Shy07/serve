@@ -5,7 +5,6 @@ PREFIX ?= /usr/local
 all: clean build
 
 build:
-	$(CRYSTAL_BIN) deps
 	$(CRYSTAL_BIN) build --release -o bin/serve src/serve/bootstrap.cr $(CRFLAGS)
 
 clean:
